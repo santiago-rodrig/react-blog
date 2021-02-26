@@ -21,9 +21,12 @@ function ArticlePage({ match }) {
 
     async function getArticle() {
       try {
-        const article = await axios.get(`/api/articles/${name}`, {
-          cancelToken: source.token,
-        });
+        const article = await axios.get(
+          `http://localhost:8000/api/articles/${name}`,
+          {
+            cancelToken: source.token,
+          }
+        );
 
         setArticleMetaData(article);
       } catch (error) {
