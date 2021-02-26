@@ -35,6 +35,10 @@ function AddCommentForm({ articleName, setArticleMetaData }) {
     );
 
     setArticleMetaData(response.data);
+    setComment({
+      username: "",
+      text: "",
+    });
   }
 
   return (
