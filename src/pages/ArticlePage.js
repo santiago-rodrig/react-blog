@@ -4,6 +4,7 @@ import ArticlesList from "../components/ArticlesList";
 import NotFoundPage from "./NotFoundPage";
 import CommentsList from "../components/CommentsList";
 import UpVotesSection from "../components/UpVoteSection";
+import AddCommentForm from "../components/AddCommentForm";
 import axios from "axios";
 
 function ArticlePage({ match }) {
@@ -59,6 +60,10 @@ function ArticlePage({ match }) {
       {article.content.map((paragraph, idx) => (
         <p key={idx}>{paragraph}</p>
       ))}
+      <AddCommentForm
+        articleName={name}
+        setArticleMetaData={setArticleMetaData}
+      />
       <CommentsList comments={articleMetaData.comments} />
       <h3>Other Articles:</h3>
       <ArticlesList articles={otherArticles} />
