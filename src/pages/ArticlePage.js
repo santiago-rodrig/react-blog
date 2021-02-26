@@ -21,16 +21,13 @@ function ArticlePage({ match }) {
 
     async function getArticle() {
       try {
-        const article = await axios.get(
-          `http://localhost:8000/api/articles/${name}`,
-          {
-            cancelToken: source.token,
-          }
-        );
+        const response = await axios.get(`/api/articles/${name}`, {
+          cancelToken: source.token,
+        });
 
-        setArticleMetaData(article);
+        setArticleMetaData(response.data);
       } catch (error) {
-        console.error("Failed to fetch article", name);
+        console.error("Failed to fetch article", name, "metadata");
       }
 
       setLoading(false);
@@ -42,7 +39,7 @@ function ArticlePage({ match }) {
       source.cancel();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [name]);
 
   if (loading) return <p>Loading article...</p>;
   if (!article) return <NotFoundPage />;
