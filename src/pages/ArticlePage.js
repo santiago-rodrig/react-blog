@@ -3,6 +3,7 @@ import articleContent from "./article-content";
 import ArticlesList from "../components/ArticlesList";
 import NotFoundPage from "./NotFoundPage";
 import CommentsList from "../components/CommentsList";
+import UpVotesSection from "../components/UpVoteSection";
 import axios from "axios";
 
 function ArticlePage({ match }) {
@@ -50,7 +51,11 @@ function ArticlePage({ match }) {
   return (
     <>
       <h1>{article.name}</h1>
-      <h3>{articleMetaData.upvotes} upvotes</h3>
+      <UpVotesSection
+        upvotes={articleMetaData.upvotes}
+        articleName={name}
+        setArticleMetaData={setArticleMetaData}
+      />
       {article.content.map((paragraph, idx) => (
         <p key={idx}>{paragraph}</p>
       ))}
