@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import articleContent from "./article-content";
 import ArticlesList from "../components/ArticlesList";
 import NotFoundPage from "./NotFoundPage";
+import CommentsList from "../components/CommentsList";
 import axios from "axios";
 
 function ArticlePage({ match }) {
@@ -53,6 +54,7 @@ function ArticlePage({ match }) {
       {article.content.map((paragraph, idx) => (
         <p key={idx}>{paragraph}</p>
       ))}
+      <CommentsList comments={articleMetaData.comments} />
       <h3>Other Articles:</h3>
       <ArticlesList articles={otherArticles} />
     </>
